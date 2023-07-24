@@ -6,10 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import 'leaflet/dist/leaflet.css';
 import "./index.css"
 import App from "./App";
-
 const store = configureStore()
-//store.runSaga(rootSaga)
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode><Provider store={store}>
@@ -17,5 +14,4 @@ root.render(
   </Provider>
   </React.StrictMode>
 );
-
 reportWebVitals();

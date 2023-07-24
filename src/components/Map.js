@@ -4,26 +4,18 @@ import { useSelector } from 'react-redux'
 import route_points from '../data/route_points.json'
 import PropTypes from 'prop-types';
 import { Spin } from 'antd';
-
 function SetMarkers({ route_number }) {
-
     const polyline = useSelector(state => state.polyline);
     const map = useMap()
     const markers = useMemo(
         () => {
             const markers = route_points[route_number]
             if (polyline.length === 0) { map.fitBounds(markers) }
-            else {
-                const arr = markers.concat(polyline);
-                map.fitBounds(arr)
-            }
-
+            else map.fitBounds(polyline)
             return markers
         },
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        [route_number, polyline]
+        [map, route_number, polyline]
     );
-
     return (
         <>
             {markers.map((marker, index) => <Marker
@@ -38,22 +30,21 @@ function SetMarkers({ route_number }) {
                 </Popup>
             </Marker>
             )}
-            {polyline.length ? <Polyline pathOptions={{ color: '#0050b3' }} positions={polyline} /> : <div className="loading"> <Spin size="large" /> </div>}
+            {polyline.length ? <Polyline pathOptions={{ color: '#0050b3' }} weight={8} opacity={0.5} positions={polyline} /> : <div className="loading"> <Spin size="large" /> </div>}
         </>
     )
 }
 const Map = ({ route_number }) => {
     return (
-        <MapContainer scrollWheelZoom={false}>
+        <MapContainer bounds={route_points}>
             <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <SetMarkers route_number={route_number} />
+            {route_number !== null && <SetMarkers route_number={route_number} />}
         </MapContainer>
     )
 }
-
 export default Map
 Map.propTypes = {
     route_number: PropTypes.number

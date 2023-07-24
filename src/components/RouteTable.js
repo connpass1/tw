@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { Table } from 'antd';
 import { useMemo } from 'react';
 import route_points from '../data/route_points.json'
@@ -26,10 +25,7 @@ const columns = [
   }
 ];
 const format_coordinates = (coord, i) => `${coord[i][0]}, ${coord[i][1]}`
-
 const RouteTable = ({ route_number, setRoute_number }) => {
-
-
   const data = useMemo(
     () => {
       const arr = []
@@ -47,24 +43,18 @@ const RouteTable = ({ route_number, setRoute_number }) => {
     },
     []
   );
-
-
   return <Table dataSource={data} columns={columns}
     onRow={(record, index) => {
       return {
         onClick: (event) => {
           setRoute_number(index)
         }
-
       };
     }}
-
     rowClassName={(record, index) => index === route_number ? 'table-row-selected' : 'table-row'}
     pagination={false}
   />
-
 }
-
 export default RouteTable
 RouteTable.propTypes = {
   route_number: PropTypes.number,
