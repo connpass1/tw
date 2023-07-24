@@ -11,7 +11,7 @@ body {
 }
 
 .ant-table-row {
-  background-color: #d9d9d9;
+
   cursor: pointer;
 }
 
@@ -20,11 +20,6 @@ body {
   cursor: default;
 }
 
-.leaflet-container {
-  width: 75vw;
-  height: min(75vw, 100vh);
-  margin: auto;
-}
 
 .loading {
   position: fixed;
@@ -39,28 +34,12 @@ body {
   height: 50px;
 }
 
-main {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  align-items: normal;
-  align-content: normal;
+.leaflet-container {
+  width: calc(100vw - 540px);
+  height: min(50vw, 100vh);
+  margin: auto;
 }
 
-@media (max-width:1600px) {
-  .leaflet-container {
-    width: 65vw;
-    height: min(65vw, 100vh);
-  }
-}
-
-@media (max-width:1200px) {
-  .leaflet-container {
-    width: 50vw;
-    height: min(50vw, 100vh);
-  }
-}
 
 @media (max-width: 992px) {
   main {
