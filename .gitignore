@@ -1,6 +1,0 @@
-/node_modules
-/.vscode
-.gitignore
-/build
-.env   
-package-lock.json
