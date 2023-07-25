@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 import route_points from '../data/route_points.json'
-import { routerActions } from '../reducers/reducer';
+import { routerActions } from '../reducers';
 function* fetchData(action) {
     // console.log(action);
     try {

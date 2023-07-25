@@ -5,7 +5,7 @@ import RouteTable from "./components/RouteTable";
 import Map from "./components/Map";
 import Spin from "./components/Spin";
 import ErrorMessage from "./components/ErrorMessage";
-import { routerActions } from "./reducers/reducer"
+import { routerActions } from "./reducers"
 import { useDispatch } from 'react-redux'
 
 const { Content, Sider } = Layout;
