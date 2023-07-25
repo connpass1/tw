@@ -3,7 +3,6 @@ import { Marker, MapContainer, TileLayer, Popup, useMap, Polyline } from 'react-
 import { useSelector } from 'react-redux'
 import route_points from '../data/route_points.json'
 import PropTypes from 'prop-types';
-import { Spin } from 'antd';
 function SetMarkers({ route_number }) {
     const polyline = useSelector(state => state.polyline);
     const map = useMap()
@@ -30,7 +29,7 @@ function SetMarkers({ route_number }) {
                 </Popup>
             </Marker>
             )}
-            {polyline.length ? <Polyline pathOptions={{ color: '#0050b3' }} weight={8} opacity={0.5} positions={polyline} /> : <div className="loading"> <Spin size="large" /> </div>}
+            {polyline.length && <Polyline pathOptions={{ color: '#0050b3' }} weight={8} opacity={0.5} positions={polyline} />}
         </>
     )
 }
